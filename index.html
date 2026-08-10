@@ -3,20 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git 版本控制示例</title>
+  <title>科学计算器</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <span class="version">版本 v1.0</span>
-    <h1>我的 Git 学习项目</h1>
-    <p>每次功能稳定后，就可以用 Git 保存一个版本。</p>
-    <div class="counter">
-      <button id="minus" aria-label="减少">−</button>
-      <strong id="count">0</strong>
-      <button id="plus" aria-label="增加">＋</button>
+  <main class="calculator" aria-label="科学计算器">
+    <header>
+      <div>
+        <span class="version">版本 v2.0</span>
+        <h1>科学计算器</h1>
+      </div>
+      <button id="theme" class="icon-button" aria-label="切换页面主题" title="切换主题">◐</button>
+    </header>
+
+    <section class="display" aria-live="polite">
+      <div id="expression" class="expression">0</div>
+      <div id="result" class="result">0</div>
+    </section>
+
+    <div class="toolbar">
+      <div class="mode-switch" aria-label="角度单位">
+        <button class="mode active" data-mode="DEG">DEG</button>
+        <button class="mode" data-mode="RAD">RAD</button>
+      </div>
+      <button id="history-toggle" class="text-button">历史记录</button>
     </div>
-    <button id="theme" class="theme">切换页面主题</button>
+
+    <section id="history" class="history" hidden>
+      <div class="history-title">
+        <strong>最近计算</strong>
+        <button id="history-clear" class="text-button">清空</button>
+      </div>
+      <div id="history-list" class="history-list">暂无记录</div>
+    </section>
+
+    <section class="keys" aria-label="计算按键">
+      <button class="key function" data-insert="sin(">sin</button>
+      <button class="key function" data-insert="cos(">cos</button>
+      <button class="key function" data-insert="tan(">tan</button>
+      <button class="key function" data-insert="log(">log</button>
+      <button class="key function" data-insert="ln(">ln</button>
+
+      <button class="key function" data-insert="sqrt(">√</button>
+      <button class="key function" data-action="square">x²</button>
+      <button class="key function" data-insert="^">xʸ</button>
+      <button class="key function" data-insert="exp(">eˣ</button>
+      <button class="key function" data-action="ten-power">10ˣ</button>
+
+      <button class="key function" data-insert="(">(</button>
+      <button class="key function" data-insert=")">)</button>
+      <button class="key function" data-insert="π">π</button>
+      <button class="key function" data-insert="e">e</button>
+      <button class="key function" data-insert="!">n!</button>
+
+      <button class="key danger" data-action="clear">AC</button>
+      <button class="key muted" data-action="backspace">⌫</button>
+      <button class="key muted" data-insert="%">%</button>
+      <button class="key operator" data-insert="÷">÷</button>
+      <button class="key function" data-insert="abs(">|x|</button>
+
+      <button class="key number" data-insert="7">7</button>
+      <button class="key number" data-insert="8">8</button>
+      <button class="key number" data-insert="9">9</button>
+      <button class="key operator" data-insert="×">×</button>
+      <button class="key function" data-action="answer">Ans</button>
+
+      <button class="key number" data-insert="4">4</button>
+      <button class="key number" data-insert="5">5</button>
+      <button class="key number" data-insert="6">6</button>
+      <button class="key operator" data-insert="−">−</button>
+      <button class="key function" data-insert="^(-1)">1/x</button>
+
+      <button class="key number" data-insert="1">1</button>
+      <button class="key number" data-insert="2">2</button>
+      <button class="key number" data-insert="3">3</button>
+      <button class="key operator" data-insert="+">+</button>
+      <button class="key equals" data-action="calculate">=</button>
+
+      <button class="key number zero" data-insert="0">0</button>
+      <button class="key number" data-insert=".">.</button>
+    </section>
+
+    <p class="hint">支持键盘输入；按 Enter 计算，Esc 清空</p>
   </main>
   <script src="script.js"></script>
 </body>
